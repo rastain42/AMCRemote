@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ledRemote/ui/common/app_colors.dart';
-import 'package:ledRemote/ui/common/ui_helpers.dart';
+import 'package:led_remote/ui/common/app_colors.dart';
+import 'package:led_remote/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 

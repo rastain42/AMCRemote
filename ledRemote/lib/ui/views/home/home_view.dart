@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:ledRemote/ui/common/app_colors.dart';
-import 'package:ledRemote/ui/common/ui_helpers.dart';
-
 import 'home_viewmodel.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
@@ -18,7 +15,7 @@ class HomeView extends StackedView<HomeViewModel> {
       appBar: AppBar(
         title: Text('LED Matrix Controller'),
       ),
-      body: _pages[_selectedIndex],
+      body: viewModel.pages[viewModel.selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -29,8 +26,8 @@ class HomeView extends StackedView<HomeViewModel> {
           BottomNavigationBarItem(
               icon: Icon(Icons.graphic_eq), label: 'Spectre Audio'),
         ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        currentIndex: viewModel.selectedIndex,
+        onTap: viewModel.onItemTapped,
       ),
     );
   }

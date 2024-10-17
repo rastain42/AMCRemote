@@ -1,14 +1,14 @@
-import 'package:ledRemote/ui/bottom_sheets/notice/notice_sheet.dart';
-import 'package:ledRemote/ui/dialogs/info_alert/info_alert_dialog.dart';
-import 'package:ledRemote/ui/views/home/home_view.dart';
-import 'package:ledRemote/ui/views/startup/startup_view.dart';
+import 'package:led_remote/ui/bottom_sheets/notice/notice_sheet.dart';
+import 'package:led_remote/ui/dialogs/info_alert/info_alert_dialog.dart';
+import 'package:led_remote/ui/views/home/home_view.dart';
+import 'package:led_remote/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:ledRemote/ui/views/authentification/authentification_view.dart';
-import 'package:ledRemote/ui/views/time/time_view.dart';
-import 'package:ledRemote/ui/views/temperature/temperature_view.dart';
-import 'package:ledRemote/ui/views/message/message_view.dart';
-import 'package:ledRemote/ui/views/audio_spectrum/audio_spectrum_view.dart';
+import 'package:led_remote/ui/views/authentification/authentification_view.dart';
+import 'package:led_remote/ui/views/time/time_view.dart';
+import 'package:led_remote/ui/views/temperature/temperature_view.dart';
+import 'package:led_remote/ui/views/message/message_view.dart';
+import 'package:led_remote/ui/views/audio_spectrum/audio_spectrum_view.dart';
 // @stacked-import
 
 @StackedApp(

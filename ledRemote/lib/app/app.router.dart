@@ -7,15 +7,15 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:flutter/material.dart' as _i9;
 import 'package:flutter/material.dart';
-import 'package:ledRemote/ui/views/audio_spectrum/audio_spectrum_view.dart'
+import 'package:led_remote/ui/views/audio_spectrum/audio_spectrum_view.dart'
     as _i8;
-import 'package:ledRemote/ui/views/authentification/authentification_view.dart'
+import 'package:led_remote/ui/views/authentification/authentification_view.dart'
     as _i4;
-import 'package:ledRemote/ui/views/home/home_view.dart' as _i2;
-import 'package:ledRemote/ui/views/message/message_view.dart' as _i7;
-import 'package:ledRemote/ui/views/startup/startup_view.dart' as _i3;
-import 'package:ledRemote/ui/views/temperature/temperature_view.dart' as _i6;
-import 'package:ledRemote/ui/views/time/time_view.dart' as _i5;
+import 'package:led_remote/ui/views/home/home_view.dart' as _i2;
+import 'package:led_remote/ui/views/message/message_view.dart' as _i7;
+import 'package:led_remote/ui/views/startup/startup_view.dart' as _i3;
+import 'package:led_remote/ui/views/temperature/temperature_view.dart' as _i6;
+import 'package:led_remote/ui/views/time/time_view.dart' as _i5;
 import 'package:stacked/stacked.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i10;
 

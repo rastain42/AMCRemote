@@ -1,61 +1,68 @@
+import 'dart:async';
+import 'dart:math';
+import 'dart:typed_data';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:record/record.dart';
+import 'package:fftea/fftea.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class AudioSpectrumViewModel extends BaseViewModel {
-  bool isRecording = false;
-  FlutterAudioRecorder? _recorder;
-
-  Future<void> startRecording() async {
-    isRecording = true;
-    notifyListeners();
-    _recorder = FlutterAudioRecorder('audio_spectrum');
-    await _recorder!.initialized;
-    await _recorder!.start();
-  }
-
-  FlutterAudioRecorder? _recorder;
+  final AudioRecorder _recorder = AudioRecorder();
+  List<double> _spectrumData = List.filled(50, 0.0);
   Timer? _timer;
   bool isRecording = false;
-  List<double> _spectrumData =
-      List.filled(50, 0.0); // Spectrum data initialized
 
-  @override
-  void initState() {
-    super.initState();
-    _initializeRecorder();
+  // Méthode pour démarrer l'enregistrement
+  Future<void> startRecording() async {
+    if (await _recorder.hasPermission()) {
+      await _recorder.start(
+        RecordConfig(
+          encoder: AudioEncoder.wav,
+          bitRate: 128000,
+          sampleRate: 44100,
+        ),
+        path: '',
+      );
+
+      isRecording = true;
+      notifyListeners();
+
+      _timer = Timer.periodic(Duration(milliseconds: 100), _updateSpectrumData);
+    }
   }
 
-  // Initialize the audio recorder
-  Future<void> _initializeRecorder() async {
-    _recorder = FlutterAudioRecorder('audio_spectrum');
-    await _recorder!.initialized;
-  }
-
-  // Start recording and update the spectrum data
-  Future<void> _startRecording() async {
-    await _recorder!.start();
-    isRecording = true;
-    _timer = Timer.periodic(Duration(milliseconds: 100), _updateSpectrumData);
-    setState(() {});
-  }
-
-  // Stop recording
-  Future<void> _stopRecording() async {
-    var result = await _recorder!.stop();
-    isRecording = false;
+  // Méthode pour arrêter l'enregistrement
+  Future<void> stopRecording() async {
+    await _recorder.stop();
     _timer?.cancel();
-    setState(() {});
+    isRecording = false;
+    notifyListeners();
   }
 
-  // Simulate updating spectrum data (for demonstration purposes)
-  void _updateSpectrumData(Timer timer) {
-    setState(() {
-      _spectrumData = List.generate(
-          50, (index) => Random().nextDouble() * 100); // Random data
-    });
+  // Méthode pour générer des données FFT
+  void _updateSpectrumData(Timer timer) async {
+    final audioAmplitude = await _recorder.getAmplitude();
+    if (audioAmplitude != null) {
+      // Simuler la conversion de l'amplitude en échantillons audio
+      List<double> audioSamples = List.generate(
+          512, (index) => audioAmplitude.current * Random().nextDouble());
+
+      // Appliquer la FFT sur les échantillons audio
+      var fft = FFT(512);
+      Float64x2List fftResult = fft.realFft(audioSamples);
+
+      // Extraire les 50 premières fréquences (partie réelle)
+      _spectrumData = fftResult
+          .take(50)
+          .map((complex) => complex.x.abs())
+          .toList(); // complex.x est la partie réelle
+      notifyListeners();
+    }
   }
 
-  // Generate the bar chart for the audio spectrum
-  List<BarChartGroupData> _buildSpectrumBars() {
+  // Générer les groupes de barres pour le BarChart
+  List<BarChartGroupData> getBarChartGroups() {
     return _spectrumData
         .asMap()
         .entries
@@ -72,5 +79,11 @@ class AudioSpectrumViewModel extends BaseViewModel {
           ),
         )
         .toList();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
   }
 }
