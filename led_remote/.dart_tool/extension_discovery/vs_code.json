@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "entries": [
+    {
+      "package": "led_remote",
+      "rootUri": "../",
+      "packageUri": "lib/"
+    }
+  ]
+}
