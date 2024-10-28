@@ -1,4 +1,4 @@
-# LedRemote
+# AMC remote Afficheur Multi Contenu
 
 making research on IA developpement
 
