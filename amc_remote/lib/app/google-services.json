@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1067250821782",
+    "project_id": "amcremote-de41d",
+    "storage_bucket": "amcremote-de41d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067250821782:android:44ec05925312b3fe30b0b7",
+        "android_client_info": {
+          "package_name": "AMCRemote.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoX-Z0tZS0LxDMjDysHdJB7ZhMKP11c7I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
