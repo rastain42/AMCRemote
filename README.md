@@ -15,3 +15,11 @@ il peut donc naviguer entre les différents menus et déclencher les fonctionnal
 - affichage de l'heure
 - affichage d'un texte défilant
 - affichage d'un volume sonore
+
+## améliorations possibles
+
+suite a un désaccord parmi les personnes du projet et un parti pris evident de l'enseignant  
+voici les améliorations qui seront réalisées a l'avenir :
+
+- pouvoir modifier le mot de passe par défaut du hotspot de l'esp via l'application
+- pouvoir connecter plusieurs afficheurs led grace a un serveur MQTT hebergé sur un ESP32
