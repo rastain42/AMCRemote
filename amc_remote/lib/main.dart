@@ -1,34 +1,30 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'package:amc_remote/pages/home_page.dart';
+import 'package:amc_remote/pages/welcome_page.dart';
 import 'package:flutter/material.dart';
-import 'package:amc_remote/app/app.bottomsheets.dart';
-import 'package:amc_remote/app/app.dialogs.dart';
-import 'package:amc_remote/app/app.locator.dart';
-import 'package:amc_remote/app/app.router.dart';
-import 'package:stacked_services/stacked_services.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  await setupLocator();
-  setupDialogUi();
-  setupBottomSheetUi();
-  runApp(const MainApp());
+void main() {
+  runApp(MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String? _baseUrl = 'http://192.168.4.1';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'AMC Remote',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      initialRoute: Routes.loginView,
-      onGenerateRoute: StackedRouter().onGenerateRoute,
-      navigatorKey: StackedService.navigatorKey,
-      navigatorObservers: [
-        StackedService.routeObserver,
-      ],
+      title: 'ESP32 Remote',
+      home: _baseUrl == null
+          ? WelcomePage(onConnected: (baseUrl) {
+              setState(() {
+                _baseUrl = baseUrl;
+              });
+            })
+          : HomePage(baseUrl: _baseUrl!),
     );
   }
 }

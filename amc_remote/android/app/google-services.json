@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "805059236105",
+    "project_id": "amc-app-1e6d4",
+    "storage_bucket": "amc-app-1e6d4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805059236105:android:49e9e145f444cd584503d8",
+        "android_client_info": {
+          "package_name": "dev.amc_remote"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkE_OYO_mSTNGiNElDBpOVx7DaBbBeNhc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
